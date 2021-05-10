@@ -1,0 +1,12 @@
+{
+  "name": "real-estate-mobile",
+  "displayName": "real-estate-mobile",
+  "expo": {
+    "name": "real-estate-mobile",
+    "slug": "real-estate-mobile",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
