@@ -1,25 +1,26 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 //import custom components
 import { MainButton } from '../components/main_button';
+import { RentalForm } from '../components/rental_form';
+
+//import styles
+import styles from './styles';
 
 export default function Home() {
+
+  const [price, setPrice] = useState(0)
+
   return (
     <View style={styles.container}>
-      <Text>Home!</Text>
       <StatusBar style="auto" />
+      <Text>Home [Placeholder]!</Text>
+      <RentalForm
+        price={price}
+      />
       <MainButton/>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
