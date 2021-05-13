@@ -40,5 +40,10 @@ export function MainApp({ posts }) {
 
 const Stack = createStackNavigator();
 
-
-export default MainApp
+export function AppRoute() {
+  return (
+      <Stack.Navigator initialRouteName="Landing">
+        <Stack.Screen name="Landing" component={MainApp}/>
+      </Stack.Navigator>
+  );
+}
