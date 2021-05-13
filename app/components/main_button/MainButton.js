@@ -5,10 +5,13 @@ import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-function MainButton(){
+function MainButton({ action }){
 
     return(
-        <TouchableOpacity style={styles.content}>
+        <TouchableOpacity
+        style={styles.content}
+        onPress={() => action()}
+        >
             <Ionicons
             name={'trash-outline'}
             size={26} color='white'
