@@ -6,8 +6,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'black',
-        padding: 40,
-        borderRadius: 10
+        paddingTop: 20,
+        paddingBottom: 20,
+        paddingLeft: 50,
+        paddingRight: 50,
+        borderRadius: 50,
+        margin: 20
     },
     text:{
         color: 'white',

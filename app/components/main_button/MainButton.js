@@ -5,7 +5,7 @@ import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-function MainButton({ action }){
+function MainButton({ action, text }){
 
     return(
         <TouchableOpacity
@@ -16,7 +16,7 @@ function MainButton({ action }){
             name={'trash-outline'}
             size={26} color='white'
             />
-            <Text style={styles.text}>Test</Text>
+            <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>
     )
 }

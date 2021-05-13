@@ -5,6 +5,7 @@ import { Text, View } from 'react-native';
 //import custom components
 import { MainButton } from '../components/main_button';
 import { RentalForm } from '../components/rental_form';
+import { Header } from '../components/header';
 
 //import styles
 import styles from './styles';
@@ -145,10 +146,9 @@ export default function Home() {
 
 
     const onPressBtn = () => {
-        // getCashflow()
-        // getCashoncash()
-        // getCashNeeded()
-        console.log('test')
+        getCashflow()
+        getCashoncash()
+        getCashNeeded()
     }
 
     const updateState = (var_name, val) => {
@@ -174,12 +174,6 @@ export default function Home() {
       }
     }
 
-    // const updateState = (var_name, val) => {
-    //     // define default
-    //     console.log('var_name does not exist', var_name, val)
-    //     console.log('datatpye',typeof(parseInt(val)))
-    // }
-
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
@@ -193,8 +187,14 @@ export default function Home() {
         rent={rent}
         updateState={updateState}
       />
+      
       <MainButton
         action={onPressBtn}
+        text='Analyze'
+      />
+
+      <Header
+        text={cashNeeded.toString()}
       />
     </View>
   );
