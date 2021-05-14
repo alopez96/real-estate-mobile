@@ -103,14 +103,6 @@ export default function Home() {
     }
 
     const updateState = (var_name, val) => {
-      // first, verify val is a string or number
-      if(typeof(val) == 'string'){
-        // convert string to number
-        parseInt(val)
-      }
-      else if(typeof(val) == 'number'){
-        // do nothing
-      }
       
       switch(var_name) {
         case 'price':

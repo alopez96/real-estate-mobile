@@ -11,10 +11,20 @@ function RentalForm({ var_name, value, updateState }){
         value = null
     }
     // set value to string to display as text
-    else if(typeof(value) == 'number')
+    if(typeof(value) == 'number'){
         value = value.toString()
-    else {
-        // do nothing
+    }
+
+    const verifyInput = (var_name, val) => {
+        // check if input is a number
+        if(isNaN(val)){
+            alert('input must be a number')
+            return;
+        }
+        // if it is a number, update the state
+        else{
+            updateState(var_name, val)
+        }
     }
 
     return(
@@ -25,7 +35,8 @@ function RentalForm({ var_name, value, updateState }){
             placeholder={var_name}
             style={styles.input}
             value={value}
-            onChangeText={(val) => updateState(var_name, val)}
+            keyboardType='phone-pad'
+            onChangeText={(val) => verifyInput(var_name, val)}
             />
         </View>
         </>
