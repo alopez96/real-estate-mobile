@@ -2,26 +2,14 @@ import React from 'react';
 import { View, Text, TextInput } from 'react-native';
 import styles from './styles';
 
+//import custom component
+import Input from './Input';
 
-function RentalForm({ price, rent, updateState }){
-
-    // set price to string to display as text
-    if(price === 0){
-        price = null
-    } else {
-        price = price.toString()
-    }
-
-    // set rent to string to display as text
-    if(rent === 0){
-        rent = null
-    } else {
-        rent = rent.toString()
-    }
+function RentalForm({ items, updateState }){
 
     return(
         <>
-        <View style={styles.row}>
+        {/* <View style={styles.row}>
             <Text>Price</Text>
             <TextInput
             placeholder='Price'
@@ -39,7 +27,20 @@ function RentalForm({ price, rent, updateState }){
             value={rent}
             onChangeText={(target) => updateState('rent', target)}
             />
-        </View>
+        </View> */}
+
+        {items.length > 0
+            ?
+            items.map((item, index) =>
+                <Input
+                key={index}
+                var_name={item.var_name}
+                value={item.value}
+                updateState={updateState}
+                />
+            )
+            : null
+        }
         </>
     )
 }

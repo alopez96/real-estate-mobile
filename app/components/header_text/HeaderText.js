@@ -10,7 +10,7 @@ function HeaderText({ prefix, text }){
             {prefix}
         </Text>
         <Text style={styles.darkText}>
-            {text}
+            ${text}
         </Text>
         </View>
     )

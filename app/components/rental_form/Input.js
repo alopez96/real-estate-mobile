@@ -3,24 +3,29 @@ import { View, Text, TextInput } from 'react-native';
 import styles from './styles';
 
 
-function RentalForm({ value, updateState }){
+function RentalForm({ var_name, value, updateState }){
 
-    // set value to string to display as text
+    // if the value is zero, set to null so that
+    // we display the placeholder instead of 0
     if(value === 0){
         value = null
-    } else {
+    }
+    // set value to string to display as text
+    else if(typeof(value) == 'number')
         value = value.toString()
+    else {
+        // do nothing
     }
 
     return(
         <>
-        <View>
-            <Text>Label</Text>
+        <View style={styles.row}>
+            <Text>{var_name}</Text>
             <TextInput
-            placeholder='value'
+            placeholder={var_name}
             style={styles.input}
             value={value}
-            onChangeText={(target) => updateState(value, target)}
+            onChangeText={(val) => updateState(var_name, val)}
             />
         </View>
         </>

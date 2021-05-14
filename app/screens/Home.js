@@ -179,6 +179,17 @@ export default function Home() {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
+    var list_of_numbers = [
+      {
+        var_name: 'price',
+        value: price
+      },
+      {
+        var_name: 'rent',
+        value: rent
+      }
+    ]
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -190,6 +201,7 @@ export default function Home() {
       <RentalForm
         price={price}
         rent={rent}
+        items={list_of_numbers}
         updateState={updateState}
       />
       
