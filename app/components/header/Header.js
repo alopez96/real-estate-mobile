@@ -1,13 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import styles from './styles';
 
-function Header({ text }){
+function Header({ prefix, text }){
 
     return(
-        <Text style={styles.largeText}>
+        <View style={styles.row}>
+        <Text style={styles.grayText}>
+            {prefix}
+        </Text>
+        <Text style={styles.darkText}>
             {text}
         </Text>
+        </View>
     )
 }
 

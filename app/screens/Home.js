@@ -194,7 +194,18 @@ export default function Home() {
       />
 
       <Header
+        prefix='Cash needed: '
         text={cashNeeded.toString()}
+      />
+
+      <Header
+        prefix='Cashflow: '
+        text={cashflow.toString()}
+      />
+
+      <Header
+        prefix='Cash on cash: '
+        text={cashoncash.toString()}
       />
     </View>
   );

@@ -1,9 +1,17 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    largeText:{
-        color: 'red',
-        fontSize: 32
+    row:{
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    grayText:{
+        color: 'gray',
+        fontSize: 25
+    },
+    darkText:{
+        color:'red',
+        fontSize: 25
     }
 })
 
