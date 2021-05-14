@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     },
     darkText:{
         color:'black',
-        fontSize: 23
+        fontSize: 20
     }
 })
 

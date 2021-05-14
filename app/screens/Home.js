@@ -8,6 +8,9 @@ import { RentalForm } from '../components/rental_form';
 import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
 
+//import math  function
+import { getCashNeeded } from '../math/';
+
 //import styles
 import styles from './styles';
 
@@ -33,29 +36,10 @@ export default function Home() {
 
     var down_payment = price * down_payment_percent;
 
-    /*
-    Calculate the total cash needed to bring to the table for closing deal
-    = down payment + closing costs + anticipated repairs + $10,000
-    */
-    const getCashNeeded = () => {
 
-        // closing cost is usally 2-5 percent of the total loan amount
-        // var closing_cost = (price - down_payment) * 0.04;
-        // or 4% of the total price
-        var closing_cost = price * 0.04;
-
-        /*
-        assume anticipated repairs is 5k
-        therefore, total cash needed will be:
-        down payment + closing costs + 15k
-        */
-       var total = down_payment + closing_cost;
-       
-       total = total.toPrecision(7);
-
-       total = numberWithCommas(total);
-       
-       setCashNeeded(total);
+    const updateCashNeeded = () => {
+      const cash_string = getCashNeeded(price, down_payment)
+      setCashNeeded(cash_string)
     }
 
 
@@ -151,7 +135,7 @@ export default function Home() {
     const onPressBtn = () => {
         getCashflow()
         getCashoncash()
-        getCashNeeded()
+        updateCashNeeded()
     }
 
     const updateState = (var_name, val) => {
@@ -175,10 +159,6 @@ export default function Home() {
           // define default
           console.log('var_name', var_name, ' does not exist for', val)
       }
-    }
-
-    function numberWithCommas(x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }
 
     var list_of_numbers = [
