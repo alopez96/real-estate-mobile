@@ -131,4 +131,22 @@ function getMortgagePayments(principal_amount, interest_percent, loan_duration){
     return mortgage_pay;
 }
 
-export { getCashNeeded, getMonthlyExpenses, getMortgagePayments }
+
+/* getCashflow
+    input: monthly_expenses (number), monthly_profit (number)
+    return: cash_flow (number)
+    this will be monthly profit - monthly expenses
+*/
+function getCashflow(monthly_profit, monthly_expenses){
+
+    console.log('expense', monthly_expenses)
+    console.log('profit', monthly_profit)
+    var cash_flow = monthly_profit - monthly_expenses;
+
+    cash_flow = cash_flow.toPrecision(4);
+
+    return cash_flow;
+}
+
+
+export { getCashNeeded, getMonthlyExpenses, getMortgagePayments, getCashflow }

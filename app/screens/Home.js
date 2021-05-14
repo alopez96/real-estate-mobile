@@ -9,7 +9,12 @@ import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
 
 //import math  function
-import { getCashNeeded, getMonthlyExpenses, getMortgagePayments } from '../math/';
+import { 
+  getCashNeeded, 
+  getMonthlyExpenses, 
+  getMortgagePayments,
+  getCashflow
+} from '../math/';
 
 //import styles
 import styles from './styles';
@@ -58,20 +63,36 @@ export default function Home() {
     getCashflow
     this will be monthly profit - monthly expenses
     */
-    const getCashflow = () => {
+    // const getCashflow = () => {
+    //   // define principal loan amount
+    //   var principal_amount = price - down_payment;
+    //   // get monthly expenses with the following two functions
+    //   var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
+    //   var total_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
+
+    //   var cash_flow = getMonthlyProfit() - total_expenses;
+
+    //   cash_flow = cash_flow.toPrecision(4);
+      
+    //   setCashflow(cash_flow);
+      
+    //   return cash_flow;
+    // }
+
+
+    const updateCashflow = () => {
       // define principal loan amount
       var principal_amount = price - down_payment;
       // get monthly expenses with the following two functions
       var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
-      var total_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
+      var monthly_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
 
-      var cash_flow = getMonthlyProfit() - total_expenses;
+      var monthly_profit = getMonthlyProfit();
 
-      cash_flow = cash_flow.toPrecision(4);
+      var cash_flow = getCashflow(monthly_profit, monthly_expenses)
+      console.log('cashflow', cash_flow)
       
       setCashflow(cash_flow);
-      
-      return cash_flow;
     }
 
     /*
@@ -84,7 +105,7 @@ export default function Home() {
         divide the annual cash flow by total initial investment * 100 percent
     */
     const getCashoncash = () => {
-        var annual_cashflow = getCashflow() * 12;
+        var annual_cashflow = cashflow * 12;
 
         var cash_on_cash = (annual_cashflow / down_payment) * 100;
 
@@ -95,7 +116,8 @@ export default function Home() {
 
 
     const onPressBtn = () => {
-        getCashflow()
+        // getCashflow()
+        updateCashflow()
         getCashoncash()
         updateCashNeeded()
     }

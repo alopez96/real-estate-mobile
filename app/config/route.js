@@ -18,21 +18,21 @@ function MainApp({ }) {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ size, color }) => {
             switch(route.name) {
-              case 'Home':
-                return <Ionicons name={'home-outline'} size={size} color={color}/>
-              case 'Shop':
-                return <Ionicons name={'cart-outline'} size={size} color={color}/>
+              case 'Invest':
+                return <Ionicons name={'analytics-outline'} size={size} color={color}/>
+              case 'Mortgage':
+                return <Ionicons name={'calculator-outline'} size={size} color={color}/>
             }
           }
         })}
         tabBarOptions={{ }}
         >
   
-          <Tab.Screen name="Home">
+          <Tab.Screen name="Invest">
             {props => <Home {...props} />}
           </Tab.Screen>
   
-          <Tab.Screen name="Shop" component={Shop} />
+          <Tab.Screen name="Mortgage" component={Shop} />
         </Tab.Navigator>
     );
 }
