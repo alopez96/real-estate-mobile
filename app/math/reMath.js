@@ -1,8 +1,8 @@
 // import helper functions
 import { numberWithCommas, stringToNumber } from './helpers';
 
-/*
-    getCashNeeded
+
+/*  getCashNeeded
     input: price (number), down_payment (number)
     output: total_needed (string)
 
@@ -43,33 +43,30 @@ function getCashNeeded(price, down_payment){
 }
 
 
-/*
-    getMonthlyExpenses
+/*  getMonthlyExpenses
     input:
         price (number),
-        down_payment (number),
+        mortgage (number),
         pmi_percent (number),
         vacancy_percent (number),
         repairs_percent (number),
         property_mgt_percent (number)
-
     output:
         monthly_expenses (string)
 
     = taxes + insurance + vacancy percentage + repairs + property management
         + mortgage payments + PMI
     */
-const getMonthlyExpenses = (
+function getMonthlyExpenses(
     price,
-    down_payment,
+    mortgage,
     pmi_percent,
+    insurance,
+    tax_percent,
     vacancy_percent,
     repairs_percent,
     property_mgt_percent
-    ) => {
-
-    // define principal loan amount
-    var principal_amount = price - down_payment;
+    ) {
 
     // define monthly expenses
     var insurance_monthly = insurance/12;
@@ -82,7 +79,8 @@ const getMonthlyExpenses = (
     var other_expenses = (insurance_monthly + pmi_monthly
         + taxes_monthly + vacancy_monthly + repairs_monthly
         + property_mgt_monthly);
-    var total_expenses = total_mortgage + other_expenses;
+
+    var total_expenses = mortgage + other_expenses;
 
     return total_expenses;
 }
@@ -90,7 +88,6 @@ const getMonthlyExpenses = (
 
 /*
     getMortgagePayments
-
     input:
         principal_amount (number)
         interest_percent (number),
@@ -118,11 +115,12 @@ function getMortgagePayments(principal_amount, interest_percent, loan_duration){
     temp = temp ^ number_of_months;
     temp = temp * monthly_interest;
     let top_half = temp;
+
     let bottom_half = ((1+monthly_interest)^number_of_months) - 1;
 
-    let total_mortgage = principal_amount * (top_half / bottom_half);
+    mortgage_pay = principal_amount * (top_half / bottom_half);
 
     return mortgage_pay;
 }
 
-export { getCashNeeded, getMonthlyExpenses }
+export { getCashNeeded, getMonthlyExpenses, getMortgagePayments }

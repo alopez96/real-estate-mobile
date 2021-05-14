@@ -9,10 +9,11 @@ import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
 
 //import math  function
-import { getCashNeeded } from '../math/';
+import { getCashNeeded, getMonthlyExpenses, getMortgagePayments } from '../math/';
 
 //import styles
 import styles from './styles';
+
 
 export default function Home() {
 
@@ -23,7 +24,7 @@ export default function Home() {
   const [cashNeeded, setCashNeeded] = useState(0)
     
     const loan_duration = 30;
-    const interest_rate_perecent = 0.0325;
+    const interest_perecent = 0.0325;
     const down_payment_percent = 0.03;
     const tax_percent = 0.0075;
     const insurance = 2500;
@@ -38,57 +39,12 @@ export default function Home() {
 
 
     const updateCashNeeded = () => {
+      // call helper function to determine cash needed
       const cash_string = getCashNeeded(price, down_payment)
       setCashNeeded(cash_string)
     }
 
-
-    /*
-    getMonthlyExpenses
-    = taxes + insurance + vacancy percentage + repairs + property management
-        + mortgage payments + PMI
     
-    mortgage payments = M
-    M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]
-    P = principal loan amount
-    i = monthly interest rate
-    n = number of months required to repay the loan
-    */
-    const getMonthlyExpenses = () => {
-        // define principal loan amount
-        var principal_amount = price - down_payment;
-
-        // define monthly interest rate
-        var monthly_interest = interest_rate_perecent / 12;
-        
-        //define number of months required to pay loan
-        var number_of_months = loan_duration * 12;
-
-        // define temp variable for redability and to ensure PEMDAS math
-        let temp = monthly_interest + 1;
-        temp = temp ^ number_of_months;
-        temp = temp * monthly_interest;
-        let top_half = temp;
-        let bottom_half = ((1+monthly_interest)^number_of_months) - 1;
-
-        let total_mortgage = principal_amount * (top_half / bottom_half);
-
-        // define monthly expenses
-        var insurance_monthly = insurance/12;
-        var pmi_monthly = (pmi_percent * price)/12;
-        var taxes_monthly = (tax_percent * price)/12;
-        var vacancy_monthly = vacancy_percent/12;
-        var repairs_monthly = repairs_percent/12;
-        var property_mgt_monthly = property_mgt_percent/12;
-
-        var other_expenses = (insurance_monthly + pmi_monthly
-            + taxes_monthly + vacancy_monthly + repairs_monthly
-            + property_mgt_monthly);
-        var total_expenses = total_mortgage + other_expenses;
-
-        return total_expenses;
-    }
-
     /*
     getMonthlyProfit
     this will be rent + any other payment form
@@ -103,13 +59,19 @@ export default function Home() {
     this will be monthly profit - monthly expenses
     */
     const getCashflow = () => {
-        var cash_flow = getMonthlyProfit() - getMonthlyExpenses();
+      // define principal loan amount
+      var principal_amount = price - down_payment;
+      // get monthly expenses with the following two functions
+      var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
+      var total_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
 
-        cash_flow = cash_flow.toPrecision(4);
-        
-        setCashflow(cash_flow);
-        
-        return cash_flow;
+      var cash_flow = getMonthlyProfit() - total_expenses;
+
+      cash_flow = cash_flow.toPrecision(4);
+      
+      setCashflow(cash_flow);
+      
+      return cash_flow;
     }
 
     /*

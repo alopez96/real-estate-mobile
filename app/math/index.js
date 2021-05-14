@@ -1,3 +1,8 @@
-import { getCashNeeded } from './reMath';
+// import functions for public api
+import {
+    getCashNeeded,
+    getMonthlyExpenses,
+    getMortgagePayments
+} from './reMath';
 
-export { getCashNeeded };
+export { getCashNeeded, getMonthlyExpenses, getMortgagePayments };
