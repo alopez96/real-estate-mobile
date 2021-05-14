@@ -20,7 +20,7 @@ export default function Home() {
     
     const loan_duration = 30;
     const interest_rate_perecent = 0.04;
-    const down_payment_percent = 0.03;
+    const down_payment_percent = 0.2;
     const tax_percent = 0.0075;
     const insurance = 2500;
     const pmi_percent = 0.01;
@@ -40,13 +40,15 @@ export default function Home() {
 
         // closing cost is usally 2-5 percent of the total loan amount
         var closing_cost = (price - down_payment) * 0.05;
+        console.log('closing cost', closing_cost)
 
         /*
         assume anticipated repairs is 5k
         therefore, total cash needed will be:
         down payment + closing costs + 15k
         */
-       var total = down_payment + closing_cost + 15000;
+       var total = down_payment + closing_cost;
+       console.log('total', total)
        
        total = total.toPrecision(7);
 

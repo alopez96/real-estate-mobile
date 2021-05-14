@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import styles from './styles';
 
 
@@ -21,19 +21,25 @@ function RentalForm({ price, rent, updateState }){
 
     return(
         <>
+        <View>
+            <Text>Price</Text>
             <TextInput
             placeholder='Price'
             style={styles.input}
             value={price}
             onChangeText={(target) => updateState('price', target)}
             />
+        </View>
 
+        <View>
+            <Text>Rent</Text>
             <TextInput
             placeholder='Rent'
             style={styles.input}
             value={rent}
             onChangeText={(target) => updateState('rent', target)}
             />
+        </View>
         </>
     )
 }
