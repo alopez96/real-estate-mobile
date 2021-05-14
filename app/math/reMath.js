@@ -65,7 +65,8 @@ function getMonthlyExpenses(
     tax_percent,
     vacancy_percent,
     repairs_percent,
-    property_mgt_percent
+    property_mgt_percent,
+    capex_monthly
     ) {
 
     // define monthly expenses
@@ -82,7 +83,8 @@ function getMonthlyExpenses(
         taxes_monthly,
         vacancy_monthly,
         repairs_monthly,
-        property_mgt_monthly
+        property_mgt_monthly,
+        capex_monthly
     ];
     
     // call helper function to add up expenses
@@ -139,8 +141,6 @@ function getMortgagePayments(principal_amount, interest_percent, loan_duration){
 */
 function getCashflow(monthly_profit, monthly_expenses){
 
-    console.log('expense', monthly_expenses)
-    console.log('profit', monthly_profit)
     var cash_flow = monthly_profit - monthly_expenses;
 
     cash_flow = cash_flow.toPrecision(4);
@@ -149,4 +149,9 @@ function getCashflow(monthly_profit, monthly_expenses){
 }
 
 
-export { getCashNeeded, getMonthlyExpenses, getMortgagePayments, getCashflow }
+export { 
+    getCashNeeded,
+    getMonthlyExpenses,
+    getMortgagePayments,
+    getCashflow
+}

@@ -39,6 +39,7 @@ export default function Home() {
     const vacancy_percent = 0.10;
     const repairs_percent = 0.10;
     const property_mgt_percent = 0.10;
+    const capex_monthly = 200;
 
     var down_payment = price * down_payment_percent;
 
@@ -85,12 +86,16 @@ export default function Home() {
       var principal_amount = price - down_payment;
       // get monthly expenses with the following two functions
       var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
-      var monthly_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
+      var monthly_expenses =
+        getMonthlyExpenses(
+          price, mortgage_pay, pmi_percent, insurance,
+          tax_percent, vacancy_percent, repairs_percent,
+          property_mgt_percent, capex_monthly
+        );
 
       var monthly_profit = getMonthlyProfit();
 
       var cash_flow = getCashflow(monthly_profit, monthly_expenses)
-      console.log('cashflow', cash_flow)
       
       setCashflow(cash_flow);
     }
@@ -116,10 +121,9 @@ export default function Home() {
 
 
     const onPressBtn = () => {
-        // getCashflow()
-        updateCashflow()
-        getCashoncash()
-        updateCashNeeded()
+      updateCashNeeded()  
+      updateCashflow()
+      getCashoncash()
     }
 
     const updateState = (var_name, val) => {
