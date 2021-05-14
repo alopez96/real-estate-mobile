@@ -3,7 +3,7 @@ import 'react-native-gesture-handler';
 import React from 'react';
 
 //import route
-import {AppRoute} from './app/config/route';
+import { MainApp } from './app/config/route';
 
 //import React navigation container
 import { NavigationContainer } from '@react-navigation/native';
@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Home/>
+      <MainApp/>
     </NavigationContainer>
   );
 }
