@@ -29,4 +29,10 @@ function stringToNumber(x) {
 }
 
 
-export { numberWithCommas, stringToNumber }
+// add up the elements in an array to get sum
+function sumElements(arr){
+    return arr.reduce((a, b) => a + b, 0)
+}
+
+
+export { numberWithCommas, stringToNumber, sumElements }

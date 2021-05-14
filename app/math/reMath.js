@@ -1,5 +1,5 @@
 // import helper functions
-import { numberWithCommas, stringToNumber } from './helpers';
+import { numberWithCommas, stringToNumber, sumElements } from './helpers';
 
 
 /*  getCashNeeded
@@ -75,10 +75,18 @@ function getMonthlyExpenses(
     var vacancy_monthly = vacancy_percent/12;
     var repairs_monthly = repairs_percent/12;
     var property_mgt_monthly = property_mgt_percent/12;
-
-    var other_expenses = (insurance_monthly + pmi_monthly
-        + taxes_monthly + vacancy_monthly + repairs_monthly
-        + property_mgt_monthly);
+    
+    var expenses = [
+        insurance_monthly,
+        pmi_monthly,
+        taxes_monthly,
+        vacancy_monthly,
+        repairs_monthly,
+        property_mgt_monthly
+    ];
+    
+    // call helper function to add up expenses
+    var other_expenses = sumElements(expenses);
 
     var total_expenses = mortgage + other_expenses;
 
