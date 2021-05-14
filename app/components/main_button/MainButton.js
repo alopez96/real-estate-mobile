@@ -13,8 +13,8 @@ function MainButton({ action, text }){
         onPress={() => action()}
         >
             <Ionicons
-            name={'trash-outline'}
-            size={26} color='white'
+            name={'analytics-outline'}
+            size={25} color='white'
             />
             <Text style={styles.text}>{text}</Text>
         </TouchableOpacity>

@@ -3,15 +3,16 @@ import { StyleSheet } from 'react-native'
 const styles = StyleSheet.create({
     row:{
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        margin: 5
     },
     grayText:{
         color: 'gray',
-        fontSize: 25
+        fontSize: 20
     },
     darkText:{
         color:'black',
-        fontSize: 25
+        fontSize: 23
     }
 })
 
