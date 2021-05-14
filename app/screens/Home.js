@@ -20,7 +20,7 @@ export default function Home() {
   const [cashNeeded, setCashNeeded] = useState(0)
     
     const loan_duration = 30;
-    const interest_rate_perecent = 0.04;
+    const interest_rate_perecent = 0.0325;
     const down_payment_percent = 0.03;
     const tax_percent = 0.0075;
     const insurance = 2500;
@@ -40,7 +40,9 @@ export default function Home() {
     const getCashNeeded = () => {
 
         // closing cost is usally 2-5 percent of the total loan amount
-        var closing_cost = (price - down_payment) * 0.05;
+        // var closing_cost = (price - down_payment) * 0.04;
+        // or 4% of the total price
+        var closing_cost = price * 0.04;
 
         /*
         assume anticipated repairs is 5k
@@ -209,17 +211,17 @@ export default function Home() {
       />
 
       <HeaderText
-        prefix='Cash needed: '
+        prefix='Cash needed: $'
         text={cashNeeded.toString()}
       />
 
       <HeaderText
-        prefix='Mothly Cashflow: '
+        prefix='Mothly Cashflow: $'
         text={cashflow.toString()}
       />
 
       <HeaderText
-        prefix='Cash on cash: '
+        prefix='Cash on cash (%): '
         text={cashoncash.toString()}
       />
     </View>
