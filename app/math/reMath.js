@@ -4,7 +4,7 @@ import { numberWithCommas, stringToNumber } from './helpers';
 /*
     getCashNeeded
     input: price (number), down_payment (number)
-    output: total_needed (number)
+    output: total_needed (string)
 
     Calculate the total cash needed to bring to the table for closing deal
     this can be estimated to be:
@@ -42,4 +42,87 @@ function getCashNeeded(price, down_payment){
    return total_needed;
 }
 
-export { getCashNeeded }
+
+/*
+    getMonthlyExpenses
+    input:
+        price (number),
+        down_payment (number),
+        pmi_percent (number),
+        vacancy_percent (number),
+        repairs_percent (number),
+        property_mgt_percent (number)
+
+    output:
+        monthly_expenses (string)
+
+    = taxes + insurance + vacancy percentage + repairs + property management
+        + mortgage payments + PMI
+    */
+const getMonthlyExpenses = (
+    price,
+    down_payment,
+    pmi_percent,
+    vacancy_percent,
+    repairs_percent,
+    property_mgt_percent
+    ) => {
+
+    // define principal loan amount
+    var principal_amount = price - down_payment;
+
+    // define monthly expenses
+    var insurance_monthly = insurance/12;
+    var pmi_monthly = (pmi_percent * price)/12;
+    var taxes_monthly = (tax_percent * price)/12;
+    var vacancy_monthly = vacancy_percent/12;
+    var repairs_monthly = repairs_percent/12;
+    var property_mgt_monthly = property_mgt_percent/12;
+
+    var other_expenses = (insurance_monthly + pmi_monthly
+        + taxes_monthly + vacancy_monthly + repairs_monthly
+        + property_mgt_monthly);
+    var total_expenses = total_mortgage + other_expenses;
+
+    return total_expenses;
+}
+
+
+/*
+    getMortgagePayments
+
+    input:
+        principal_amount (number)
+        interest_percent (number),
+        loan_duration (number),
+    output:
+        mortgage_pay (number)
+
+    mortgage payments = M
+    M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1]
+    P = principal loan amount
+    i = monthly interest rate
+    n = number of months required to repay the loan
+*/
+function getMortgagePayments(principal_amount, interest_percent, loan_duration){
+    var mortgage_pay;
+
+    // define monthly interest rate
+    var monthly_interest = interest_percent / 12;
+    
+    //define number of months required to pay loan
+    var number_of_months = loan_duration * 12;
+
+    // define temp variable for redability and to ensure PEMDAS math
+    let temp = monthly_interest + 1;
+    temp = temp ^ number_of_months;
+    temp = temp * monthly_interest;
+    let top_half = temp;
+    let bottom_half = ((1+monthly_interest)^number_of_months) - 1;
+
+    let total_mortgage = principal_amount * (top_half / bottom_half);
+
+    return mortgage_pay;
+}
+
+export { getCashNeeded, getMonthlyExpenses }
