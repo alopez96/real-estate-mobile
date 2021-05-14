@@ -199,8 +199,6 @@ export default function Home() {
       />
 
       <RentalForm
-        price={price}
-        rent={rent}
         items={list_of_numbers}
         updateState={updateState}
       />
