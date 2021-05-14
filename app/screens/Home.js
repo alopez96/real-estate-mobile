@@ -5,7 +5,8 @@ import { Text, View } from 'react-native';
 //import custom components
 import { MainButton } from '../components/main_button';
 import { RentalForm } from '../components/rental_form';
-import { Header } from '../components/header';
+import { HeaderText } from '../components/header_text';
+import { TitleText } from '../components/title_text';
 
 //import styles
 import styles from './styles';
@@ -182,7 +183,9 @@ export default function Home() {
     <View style={styles.container}>
       <StatusBar style="auto" />
 
-      <Text>[Real Estate] Analyzer!</Text>
+      <TitleText
+        text='[Real Estate] Analyzer!'
+      />
 
       <RentalForm
         price={price}
@@ -195,17 +198,17 @@ export default function Home() {
         text='Analyze'
       />
 
-      <Header
+      <HeaderText
         prefix='Cash needed: '
         text={cashNeeded.toString()}
       />
 
-      <Header
+      <HeaderText
         prefix='Mothly Cashflow: '
         text={cashflow.toString()}
       />
 
-      <Header
+      <HeaderText
         prefix='Cash on cash: '
         text={cashoncash.toString()}
       />

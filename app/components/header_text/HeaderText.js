@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View } from 'react-native';
 import styles from './styles';
 
-function Header({ prefix, text }){
+function HeaderText({ prefix, text }){
 
     return(
         <View style={styles.row}>
@@ -16,4 +16,4 @@ function Header({ prefix, text }){
     )
 }
 
-export default Header;
+export default HeaderText;

@@ -1,17 +1,18 @@
-//import react navigation
-import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
+
+//import react navigation
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 //import screens
 import Home from './../screens/Home';
 import Shop from './../screens/Shop';
 
+// import Icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Tab = createBottomTabNavigator();
 
-function MainApp({ posts }) {
+function MainApp({ }) {
     return (
         <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -25,10 +26,10 @@ function MainApp({ posts }) {
           }
         })}
         tabBarOptions={{ }}
-          >
+        >
   
           <Tab.Screen name="Home">
-            {props => <Home {...props} posts={posts} />}
+            {props => <Home {...props} />}
           </Tab.Screen>
   
           <Tab.Screen name="Shop" component={Shop} />
