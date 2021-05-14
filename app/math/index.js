@@ -3,12 +3,14 @@ import {
     getCashNeeded,
     getMonthlyExpenses,
     getMortgagePayments,
-    getCashflow
+    getCashflow,
+    getCashoncash
 } from './reMath';
 
 export {
     getCashNeeded,
     getMonthlyExpenses,
     getMortgagePayments,
-    getCashflow
+    getCashflow,
+    getCashoncash
 };

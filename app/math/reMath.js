@@ -33,13 +33,12 @@ function getCashNeeded(price, down_payment){
     */
    var total = down_payment_num + closing_cost;
    
-   // create string and round to 2 decimals
-   total = total.toFixed(2);
+    // create string and round to 2 decimals
+    // total = total.toFixed(2);
+    // add commas to string
+    // total_needed = numberWithCommas(total);
 
-   // add commas to string
-   total_needed = numberWithCommas(total);
-
-   return total_needed;
+   return total;
 }
 
 
@@ -149,9 +148,34 @@ function getCashflow(monthly_profit, monthly_expenses){
 }
 
 
+/* getCashoncash
+    input:  cashflow(number), down_payment (number)
+    output: cash_on_cash (number)
+
+this will tell us what kind of return we are get on our investment anually
+you want to shoot for 12%
+the stock market usually performs at 10, so we want to outdo 10%
+but for starting out in Cali, it's ok to get something 6-12%
+to calculate this value, we need to:
+    divide the annual cash flow by total initial investment * 100 percent
+*/
+function getCashoncash(cashflow, down_payment) {
+    console.log('cashflow', cashflow)
+    console.log('down_payment', down_payment)
+    var annual_cashflow = cashflow * 12;
+
+    var cash_on_cash = (annual_cashflow / down_payment) * 100;
+
+    cash_on_cash = cash_on_cash.toPrecision(4);
+
+    console.log('cash on cash', cash_on_cash)
+    return cash_on_cash
+}
+
 export { 
     getCashNeeded,
     getMonthlyExpenses,
     getMortgagePayments,
-    getCashflow
+    getCashflow,
+    getCashoncash
 }

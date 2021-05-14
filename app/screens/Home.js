@@ -13,8 +13,12 @@ import {
   getCashNeeded, 
   getMonthlyExpenses, 
   getMortgagePayments,
-  getCashflow
+  getCashflow,
+  getCashoncash
 } from '../math/';
+
+// import helper function
+import { numberWithCommas } from '../math/helpers';
 
 //import styles
 import styles from './styles';
@@ -46,11 +50,18 @@ export default function Home() {
 
     const updateCashNeeded = () => {
       // call helper function to determine cash needed
-      const cash_string = getCashNeeded(price, down_payment)
-      setCashNeeded(cash_string)
+      const cash = getCashNeeded(price, down_payment);
+
+      // convert number to string with commas
+      const cash_string = numberWithCommas(cash);
+
+      // set state to string version of cash for easy to read text
+      setCashNeeded(cash_string);
+
+      // return number version of cash bc it is used for math calculations
+      return cash;
     }
 
-    
     /*
     getMonthlyProfit
     this will be rent + any other payment form
@@ -59,27 +70,6 @@ export default function Home() {
     const getMonthlyProfit = () => {
         return rent;
     }
-
-    /*
-    getCashflow
-    this will be monthly profit - monthly expenses
-    */
-    // const getCashflow = () => {
-    //   // define principal loan amount
-    //   var principal_amount = price - down_payment;
-    //   // get monthly expenses with the following two functions
-    //   var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
-    //   var total_expenses = getMonthlyExpenses(price, mortgage_pay, pmi_percent, insurance, tax_percent, vacancy_percent, repairs_percent, property_mgt_percent)
-
-    //   var cash_flow = getMonthlyProfit() - total_expenses;
-
-    //   cash_flow = cash_flow.toPrecision(4);
-      
-    //   setCashflow(cash_flow);
-      
-    //   return cash_flow;
-    // }
-
 
     const updateCashflow = () => {
       // define principal loan amount
@@ -100,30 +90,16 @@ export default function Home() {
       setCashflow(cash_flow);
     }
 
-    /*
-    getCashoncash
-    this will tell us what kind of return we are get on our investment anually
-    you want to shoot for 12%
-    the stock market usually performs at 10, so we want to outdo 10%
-    but for starting out in Cali, it's ok to get something 6-12%
-    to calculate this value, we need to:
-        divide the annual cash flow by total initial investment * 100 percent
-    */
-    const getCashoncash = () => {
-        var annual_cashflow = cashflow * 12;
 
-        var cash_on_cash = (annual_cashflow / down_payment) * 100;
-
-        cash_on_cash = cash_on_cash.toPrecision(4);
-        
-        setCashoncash(cash_on_cash);
+    const updateCashoncash = (cash_needed) => {
+      var cash_on_cash = getCashoncash(cashflow, cash_needed);
+      setCashoncash(cash_on_cash);
     }
 
-
-    const onPressBtn = () => {
-      updateCashNeeded()  
+    const onPressBtn = async() => {
+      const cash_needed =  await updateCashNeeded()
       updateCashflow()
-      getCashoncash()
+      updateCashoncash(cash_needed)
     }
 
     const updateState = (var_name, val) => {
