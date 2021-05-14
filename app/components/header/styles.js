@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
         fontSize: 25
     },
     darkText:{
-        color:'rgb(255, 81, 0)',
+        color:'black',
         fontSize: 25
     }
 })

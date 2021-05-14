@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         paddingLeft: 10
       },
+      row:{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
 });
 
 export default styles;

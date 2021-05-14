@@ -21,7 +21,7 @@ function RentalForm({ price, rent, updateState }){
 
     return(
         <>
-        <View>
+        <View style={styles.row}>
             <Text>Price</Text>
             <TextInput
             placeholder='Price'
@@ -31,7 +31,7 @@ function RentalForm({ price, rent, updateState }){
             />
         </View>
 
-        <View>
+        <View style={styles.row}>
             <Text>Rent</Text>
             <TextInput
             placeholder='Rent'
