@@ -8,6 +8,9 @@ import { RentalForm } from '../components/rental_form';
 import { MainButton } from '../components/main_button';
 import { HeaderText } from '../components/header_text';
 
+//import styles
+import styles from './styles';
+
 
 export default function Shop() {
 
@@ -96,12 +99,3 @@ export default function Shop() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
