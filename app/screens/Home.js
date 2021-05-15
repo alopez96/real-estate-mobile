@@ -135,7 +135,8 @@ export default function Home() {
             break; // exist out of switch
         default:
           // define default
-          console.log('var_name', var_name, ' does not exist for', val)
+          console.log('var_name', var_name, ' does not exist for', val);
+          alert('error with input values');
       }
     }
 
