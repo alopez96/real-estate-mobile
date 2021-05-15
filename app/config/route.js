@@ -20,7 +20,7 @@ function MainApp({ }) {
             switch(route.name) {
               case 'Invest':
                 return <Ionicons name={'analytics-outline'} size={size} color={color}/>
-              case 'Mortgage':
+              case '2 Percent':
                 return <Ionicons name={'calculator-outline'} size={size} color={color}/>
             }
           }
@@ -32,7 +32,7 @@ function MainApp({ }) {
             {props => <Home {...props} />}
           </Tab.Screen>
   
-          <Tab.Screen name="Mortgage" component={Shop} />
+          <Tab.Screen name="2 Percent" component={Shop} />
         </Tab.Navigator>
     );
 }

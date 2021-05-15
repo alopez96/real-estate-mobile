@@ -31,9 +31,9 @@ export default function Home() {
   const [cashflow, setCashflow] = useState(0)
   const [cashoncash, setCashoncash] = useState(0)
   const [cashNeeded, setCashNeeded] = useState(0)
+  const [interest, setInterest] = useState(0.0325)
     
     const loan_duration = 30;
-    const interest_perecent = 0.0325;
     const down_payment_percent = 0.03;
     const tax_percent = 0.0075;
     const insurance = 2500;
@@ -72,10 +72,10 @@ export default function Home() {
     }
 
     const updateCashflow = () => {
-      // define principal loan amount
+      // define principal loan amounn)
       var principal_amount = price - down_payment;
       // get monthly expenses with the following two functions
-      var mortgage_pay = getMortgagePayments(principal_amount, interest_perecent, loan_duration)
+      var mortgage_pay = getMortgagePayments(principal_amount, interest, loan_duration)
       var monthly_expenses =
         getMonthlyExpenses(
           price, mortgage_pay, pmi_percent, insurance,
@@ -130,6 +130,9 @@ export default function Home() {
         case 'rent':
           setRent(val)
           break; // exist out of switch
+          case 'interest':
+            setInterest(val)
+            break; // exist out of switch
         default:
           // define default
           console.log('var_name', var_name, ' does not exist for', val)
@@ -144,6 +147,10 @@ export default function Home() {
       {
         var_name: 'rent',
         value: rent
+      },
+      {
+        var_name: 'interest',
+        value: interest
       }
     ]
 
@@ -152,7 +159,7 @@ export default function Home() {
       <StatusBar style="auto" />
 
       <TitleText
-        text='[Real Estate] Analyzer!'
+        text='[Real Estate] Analyzer'
       />
 
       <RentalForm

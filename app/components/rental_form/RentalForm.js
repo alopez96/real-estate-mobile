@@ -8,26 +8,7 @@ import Input from './Input';
 function RentalForm({ items, updateState }){
 
     return(
-        <>
-        {/* <View style={styles.row}>
-            <Text>Price</Text>
-            <TextInput
-            placeholder='Price'
-            style={styles.input}
-            value={price}
-            onChangeText={(target) => updateState('price', target)}
-            />
-        </View>
-
-        <View style={styles.row}>
-            <Text>Rent</Text>
-            <TextInput
-            placeholder='Rent'
-            style={styles.input}
-            value={rent}
-            onChangeText={(target) => updateState('rent', target)}
-            />
-        </View> */}
+        <View style={styles.flexEnd}>
 
         {items.length > 0
             ?
@@ -41,7 +22,8 @@ function RentalForm({ items, updateState }){
             )
             : null
         }
-        </>
+        
+        </View>
     )
 }
 
