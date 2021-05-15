@@ -13,15 +13,18 @@ function RentalForm({ var_name, value, updateState }){
     // set value to string to display as text
     if(typeof(value) == 'number'){
         value = value.toString()
+    } else if(typeof(value) == 'string'){
+        // if its already string, do nothing
     }
 
     const verifyInput = (var_name, val) => {
         // check if input is a number
         if(isNaN(val)){
+            // if it's, display error and do not accept as input
             alert('input must be a number')
             return;
         }
-        // if it is a number, update the state
+        // if it is a number, accept the input and update the state
         else{
             updateState(var_name, val)
         }

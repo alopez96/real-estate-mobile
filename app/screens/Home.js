@@ -88,18 +88,20 @@ export default function Home() {
       var cash_flow = getCashflow(monthly_profit, monthly_expenses)
       
       setCashflow(cash_flow);
+
+      return cash_flow;
     }
 
 
-    const updateCashoncash = (cash_needed) => {
-      var cash_on_cash = getCashoncash(cashflow, cash_needed);
+    const updateCashoncash = (cash_flow, cash_needed) => {
+      var cash_on_cash = getCashoncash(cash_flow, cash_needed);
       setCashoncash(cash_on_cash);
     }
 
     const onPressBtn = async() => {
       const cash_needed =  await updateCashNeeded()
-      updateCashflow()
-      updateCashoncash(cash_needed)
+      const cash_flow = await updateCashflow()
+      updateCashoncash(cash_flow, cash_needed)
     }
 
     const updateState = (var_name, val) => {
