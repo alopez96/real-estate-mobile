@@ -99,6 +99,19 @@ export default function Home() {
     }
 
     const onPressBtn = async() => {
+      //verify input
+      if(isNaN(price) || isNaN(rent)){
+        alert('input must be a number');
+        return;
+      }
+
+      // if input is a string, and the length of the string is 0, alert error
+      if(price.length === 0 || rent.length === 0){
+        alert('input must not be 0');
+        return;  
+      }
+
+      // once variables have beeen verified, run the math
       const cash_needed =  await updateCashNeeded()
       const cash_flow = await updateCashflow()
       updateCashoncash(cash_flow, cash_needed)

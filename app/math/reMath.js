@@ -160,16 +160,13 @@ to calculate this value, we need to:
     divide the annual cash flow by total initial investment * 100 percent
 */
 function getCashoncash(cashflow, down_payment) {
-    console.log('cashflow', cashflow)
-    console.log('down_payment', down_payment)
     var annual_cashflow = cashflow * 12;
 
     var cash_on_cash = (annual_cashflow / down_payment) * 100;
 
     cash_on_cash = cash_on_cash.toPrecision(4);
 
-    console.log('cash on cash', cash_on_cash)
-    return cash_on_cash
+    return cash_on_cash;
 }
 
 export { 
