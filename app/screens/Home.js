@@ -108,6 +108,10 @@ export default function Home() {
       // if input is a string, and the length of the string is 0, alert error
       if(price.length === 0 || rent.length === 0){
         alert('input must not be 0');
+        return;
+      }
+      else if(price === 0 || rent === 0){
+        alert('input must not be 0');
         return;  
       }
 
