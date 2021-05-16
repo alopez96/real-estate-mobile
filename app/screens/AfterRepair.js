@@ -6,6 +6,7 @@ import { MainButton } from '../components/main_button';
 import { RentalForm } from '../components/rental_form';
 import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
+import { HelpSection } from '../components/help_section';
 
 //import math  function
 import {
@@ -16,11 +17,16 @@ import {
 //import styles
 import styles from './styles';
 
+//import text for help screen
+import { helpTextAfterRepair } from './helpText';
+
+
 function AfterRepair() {
 
     const [arv, setArv] = useState(0)
     const [rehabCost, setRehabCost] = useState(0)
     const [offer, setOffer] = useState(0)
+    const [visible, setVisible] = useState(false)
 
     var list_of_numbers = [
         {
@@ -75,6 +81,10 @@ function AfterRepair() {
         setOffer(offer_amount);
     }
 
+    const toggleOverlay = () => {
+        setVisible(!visible);
+    };
+
     return(
         <View style={styles.container}>
             <TitleText
@@ -96,6 +106,12 @@ function AfterRepair() {
                 prefix='Offer amount: $'
                 text={offer.toString()}
             />
+
+        <HelpSection
+            visible={visible}
+            toggleOverlay={toggleOverlay}
+            helpText={helpTextAfterRepair}
+        />
         </View>
     )
 }
