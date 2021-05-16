@@ -39,13 +39,13 @@ function HelpSection({visible, toggleOverlay}) {
                 Cash flow is given by taking the income produced by the property
                 (rent) minus the expenses on the property.
                 The following numbers are asssumed:{"\n"}
-                    tax_percent = 0.0075;{"\n"}
-                    insurance = 2500;{"\n"}
-                    pmi_percent = 0.01;{"\n"}
-                    vacancy_percent = 0.10;{"\n"}
-                    repairs_percent = 0.10;{"\n"}
-                    property_mgt_percent = 0.10;{"\n"}
-                    capex_monthly = 200;{"\n"}
+                    tax_percent = 0.75%{"\n"}
+                    insurance = $2500{"\n"}
+                    pmi_percent = 1.0%{"\n"}
+                    vacancy_percent = 10%{"\n"}
+                    repairs_percent = 10%{"\n"}
+                    property_mgt_percent = 10%{"\n"}
+                    capex_monthly = $200{"\n"}
             </Text>
 
             <Text>
