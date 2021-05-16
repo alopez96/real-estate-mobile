@@ -32,9 +32,9 @@ export default function Home() {
   const [cashoncash, setCashoncash] = useState(0)
   const [cashNeeded, setCashNeeded] = useState(0)
   const [interest, setInterest] = useState(0.0325)
+  const [downpayment, setDownpayment] = useState(0.03)
     
   const loan_duration = 30;
-  const down_payment_percent = 0.03;
   const tax_percent = 0.0075;
   const insurance = 2500;
   const pmi_percent = 0.01;
@@ -45,7 +45,7 @@ export default function Home() {
   const property_mgt_percent = 0.10;
   const capex_monthly = 200;
 
-  var down_payment = price * down_payment_percent;
+  var down_payment = price * downpayment;
 
 
   const updateCashNeeded = () => {
@@ -124,34 +124,43 @@ export default function Home() {
   const updateState = (var_name, val) => {
     
     switch(var_name) {
-      case 'price':
+      case 'Price':
         setPrice(val)
         break; // exist out of switch
-      case 'rent':
+      case 'Rent':
         setRent(val)
         break; // exist out of switch
-        case 'interest':
-          setInterest(val)
-          break; // exist out of switch
+      case 'interest':
+        setInterest(val)
+        break; // exist out of switch
+      case 'Down payment':
+        setDownpayment(val)
+        break; // exist out of switch
       default:
         // define default
         console.log('var_name', var_name, ' does not exist for', val);
-        alert('error with input values');
+        console.log('var_name must match a case in the switch within Home.updateState()');
     }
   }
 
+  // var_name, value pairs
+  // note: var_name must match a case in the switch within updateState()
   var list_of_numbers = [
     {
-      var_name: 'price',
+      var_name: 'Price',
       value: price
     },
     {
-      var_name: 'rent',
+      var_name: 'Rent',
       value: rent
     },
     {
-      var_name: 'interest',
+      var_name: 'Interest',
       value: interest
+    },
+    {
+      var_name: 'Down payment',
+      value: downpayment
     }
   ]
 
