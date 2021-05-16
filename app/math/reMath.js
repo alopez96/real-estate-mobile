@@ -178,11 +178,12 @@ function getCashoncash(cashflow, down_payment) {
         offer (number)
     this function will calculate the amount I should offer on a fixer upper
     using the 70% rule. which takes 70% of the ARV, and subtracts the repair costs
+    for the (expensive) market of Northen California, I will use 90%
 */
 function getOfferAmount(arv_estimate, rehab_cost) {
 
-    var arv = arv_estimate * 0.70
-    var offer = arv - rehab_cost
+    var arv = arv_estimate * 0.9;
+    var offer = arv - rehab_cost;
 
     // convert number to string with 2 decimal place precision
     offer = numberWithCommas(offer);

@@ -69,9 +69,7 @@ function AfterRepair() {
 
         // once variables have beeen verified, run the math
 
-        // anything less than 1% will probably not generate any cashflow
-        // anything between 1-2% will probably generate decent cashflow
-        // anything more than 2% will generate cashflow (be wary of these, usually not a good sign)
+        // I am running the 70% rule using 90% for Northern California
         var offer_amount = getOfferAmount(arv, rehabCost);
         
         setOffer(offer_amount);
@@ -80,7 +78,7 @@ function AfterRepair() {
     return(
         <View style={styles.container}>
             <TitleText
-            text='[70%] Rule'
+            text='[90%] Rule'
             />
 
         <RentalForm
