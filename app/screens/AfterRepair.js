@@ -95,7 +95,7 @@ function AfterRepair() {
             />
 
         <HeaderText
-                prefix='Offer amount: '
+                prefix='Offer amount: $'
                 text={offer.toString()}
             />
         </View>

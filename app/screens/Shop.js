@@ -89,12 +89,12 @@ export default function Shop() {
 
       <MainButton
         action={onPressBtn}
-        text='Get percent'
+        text='Get percentage'
         icon='analytics-outline'
       />
 
       <HeaderText
-        prefix='1-2 % test result: '
+        prefix='1-2 % Test result: '
         text={percent.toString()}
       />
     </View>

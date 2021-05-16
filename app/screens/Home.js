@@ -180,7 +180,7 @@ export default function Home() {
       />
 
       <HeaderText
-        prefix='Mothly Cashflow: $'
+        prefix='Mothly cashflow: $'
         text={cashflow.toString()}
       />
 

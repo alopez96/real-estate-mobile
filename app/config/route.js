@@ -21,9 +21,9 @@ function MainApp({ }) {
             switch(route.name) {
               case 'Invest':
                 return <Ionicons name={'analytics-outline'} size={size} color={color}/>
-              case '2 Percent':
+              case 'Rental':
                 return <Ionicons name={'calculator-outline'} size={size} color={color}/>
-              case 'After Repair':
+              case 'Repair':
                 return <Ionicons name={'hammer-outline'} size={size} color={color}/>
             }
           }
@@ -35,9 +35,9 @@ function MainApp({ }) {
             {props => <Home {...props} />}
           </Tab.Screen>
   
-          <Tab.Screen name="2 Percent" component={Shop} />
+          <Tab.Screen name="Rental" component={Shop} />
 
-          <Tab.Screen name="After Repair" component={AfterRepair} />
+          <Tab.Screen name="Repair" component={AfterRepair} />
         </Tab.Navigator>
     );
 }
