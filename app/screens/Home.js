@@ -171,6 +171,7 @@ export default function Home() {
       <MainButton
         action={onPressBtn}
         text='Analyze'
+        icon='analytics-outline'
       />
 
       <HeaderText

@@ -90,6 +90,7 @@ export default function Shop() {
       <MainButton
         action={onPressBtn}
         text='Get percent'
+        icon='analytics-outline'
       />
 
       <HeaderText

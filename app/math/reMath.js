@@ -169,10 +169,31 @@ function getCashoncash(cashflow, down_payment) {
     return cash_on_cash;
 }
 
+
+/*  getOfferAmount()
+    input:
+        arv_estimate (number)
+        rehab_cost (number)
+    output:
+        offer (number)
+    this function will calculate the amount I should offer on a fixer upper
+    using the 70% rule. which takes 70% of the ARV, and subtracts the repair costs
+*/
+function getOfferAmount(arv_estimate, rehab_cost) {
+
+    var arv = arv_estimate * 0.70
+    var offer = arv - rehab_cost
+
+    // convert number to string with 2 decimal place precision
+    offer = numberWithCommas(offer);
+    return offer;
+}
+
 export { 
     getCashNeeded,
     getMonthlyExpenses,
     getMortgagePayments,
     getCashflow,
-    getCashoncash
+    getCashoncash,
+    getOfferAmount
 }

@@ -5,7 +5,7 @@ import styles from './styles';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
-function MainButton({ action, text }){
+function MainButton({ action, text, icon }){
 
     return(
         <TouchableOpacity
@@ -13,7 +13,7 @@ function MainButton({ action, text }){
         onPress={() => action()}
         >
             <Ionicons
-            name={'analytics-outline'}
+            name={icon}
             size={25} color='white'
             />
             <Text style={styles.text}>{text}</Text>

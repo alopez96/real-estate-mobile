@@ -7,6 +7,12 @@ import { RentalForm } from '../components/rental_form';
 import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
 
+//import math  function
+import {
+    getOfferAmount
+  } from '../math/';
+  
+
 //import styles
 import styles from './styles';
 
@@ -14,7 +20,7 @@ function AfterRepair() {
 
     const [arv, setArv] = useState(0)
     const [rehabCost, setRehabCost] = useState(0)
-    const [percent, setPercent] = useState(0)
+    const [offer, setOffer] = useState(0)
 
     var list_of_numbers = [
         {
@@ -62,27 +68,35 @@ function AfterRepair() {
             }
 
         // once variables have beeen verified, run the math
-        var perc = rehabCost/arv;
-        perc = perc * 100;
-        
-        // only show two decimal places and convert toString
-        percent_string = perc.toFixed(2);
 
         // anything less than 1% will probably not generate any cashflow
         // anything between 1-2% will probably generate decent cashflow
         // anything more than 2% will generate cashflow (be wary of these, usually not a good sign)
-        setPercent(percent_string);
+        var offer_amount = getOfferAmount(arv, rehabCost);
+        
+        setOffer(offer_amount);
     }
 
     return(
         <View style={styles.container}>
             <TitleText
-            text='[After] Repair Value'
+            text='[70%] Rule'
             />
 
         <RentalForm
                 items={list_of_numbers}
                 updateState={updateState}
+            />
+
+        <MainButton
+                action={onPressBtn}
+                text='Run 70% rule'
+                icon='cash-outline'
+            />
+
+        <HeaderText
+                prefix='Offer amount: '
+                text={offer.toString()}
             />
         </View>
     )

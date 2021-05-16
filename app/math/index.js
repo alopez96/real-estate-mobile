@@ -4,7 +4,8 @@ import {
     getMonthlyExpenses,
     getMortgagePayments,
     getCashflow,
-    getCashoncash
+    getCashoncash,
+    getOfferAmount
 } from './reMath';
 
 export {
@@ -12,5 +13,6 @@ export {
     getMonthlyExpenses,
     getMortgagePayments,
     getCashflow,
-    getCashoncash
+    getCashoncash,
+    getOfferAmount
 };
