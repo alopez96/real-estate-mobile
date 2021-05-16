@@ -1,4 +1,4 @@
-import React, { isValidElement, useState } from 'react';
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, Text } from 'react-native';
 
@@ -9,7 +9,7 @@ import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
 import { HelpSection } from '../components/help_section';
 
-//import math  function
+//import math  functions
 import { 
   getCashNeeded, 
   getMonthlyExpenses, 
@@ -23,6 +23,9 @@ import { numberWithCommas } from '../math/helpers';
 
 //import styles
 import styles from './styles';
+
+//import text for help screen
+import helpText from './helpTextHome';
 
 
 export default function Home() {
@@ -204,6 +207,7 @@ export default function Home() {
       <HelpSection
         visible={visible}
         toggleOverlay={toggleOverlay}
+        helpText={helpText}
       />
     </View>
   );
