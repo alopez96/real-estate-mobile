@@ -1,12 +1,13 @@
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Text, View } from 'react-native';
+import { View, Text } from 'react-native';
 
 //import custom components
 import { MainButton } from '../components/main_button';
 import { RentalForm } from '../components/rental_form';
 import { HeaderText } from '../components/header_text';
 import { TitleText } from '../components/title_text';
+import { HelpSection } from '../components/help_section';
 
 //import math  function
 import { 
@@ -33,6 +34,7 @@ export default function Home() {
   const [cashNeeded, setCashNeeded] = useState(0)
   const [interest, setInterest] = useState(0.0325)
   const [downpayment, setDownpayment] = useState(0.03)
+  const [visible, setVisible] = useState(true)
     
   const loan_duration = 30;
   const tax_percent = 0.0075;
@@ -62,11 +64,7 @@ export default function Home() {
     return cash;
   }
 
-  /*
-  getMonthlyProfit
-  this will be rent + any other payment form
-  usually will be just limited to rent
-  */
+
   const getMonthlyProfit = () => {
       return rent;
   }
@@ -164,6 +162,11 @@ export default function Home() {
     }
   ]
 
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -196,6 +199,11 @@ export default function Home() {
       <HeaderText
         prefix='Cash on cash (%): '
         text={cashoncash.toString()}
+      />
+
+      <HelpSection
+        visible={visible}
+        toggleOverlay={toggleOverlay}
       />
     </View>
   );
