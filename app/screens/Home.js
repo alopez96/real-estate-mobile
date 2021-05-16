@@ -25,7 +25,7 @@ import { numberWithCommas } from '../math/helpers';
 import styles from './styles';
 
 //import text for help screen
-import helpText from './helpTextHome';
+import { helpTextHome } from './helpText';
 
 
 export default function Home() {
@@ -37,7 +37,7 @@ export default function Home() {
   const [cashNeeded, setCashNeeded] = useState(0)
   const [interest, setInterest] = useState(0.0325)
   const [downpayment, setDownpayment] = useState(0.03)
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
     
   const loan_duration = 30;
   const tax_percent = 0.0075;
@@ -207,7 +207,7 @@ export default function Home() {
       <HelpSection
         visible={visible}
         toggleOverlay={toggleOverlay}
-        helpText={helpText}
+        helpText={helpTextHome}
       />
     </View>
   );

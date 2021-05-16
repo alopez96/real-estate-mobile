@@ -7,9 +7,13 @@ import { TitleText } from '../components/title_text';
 import { RentalForm } from '../components/rental_form';
 import { MainButton } from '../components/main_button';
 import { HeaderText } from '../components/header_text';
+import { HelpSection } from '../components/help_section';
 
 //import styles
 import styles from './styles';
+
+//import text for help screen
+import { helpTextShop } from './helpText';
 
 
 export default function Shop() {
@@ -17,6 +21,7 @@ export default function Shop() {
   const [price, setPrice] = useState(0)
   const [rent, setRent] = useState(0)
   const [percent, setPercent] = useState(0)
+  const [visible, setVisible] = useState(false)
 
   var list_of_numbers = [
     {
@@ -76,6 +81,11 @@ export default function Shop() {
     setPercent(percent_string);
   }
 
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
+
   return (
     <View style={styles.container}>
       <TitleText
@@ -96,6 +106,12 @@ export default function Shop() {
       <HeaderText
         prefix='1-2 % Test result: '
         text={percent.toString()}
+      />
+
+      <HelpSection
+        visible={visible}
+        toggleOverlay={toggleOverlay}
+        helpText={helpTextShop}
       />
     </View>
   );
