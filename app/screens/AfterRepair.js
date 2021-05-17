@@ -88,7 +88,7 @@ function AfterRepair() {
     return(
         <View style={styles.container}>
             <TitleText
-            text='[90%] Rule'
+            text='[70] Percent Rule'
             />
 
         <RentalForm

@@ -26,9 +26,9 @@ function MainApp({ }) {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ size, color }) => {
             switch(route.name) {
-              case 'Invest':
-                return <Ionicons name={'analytics-outline'} size={size} color={color}/>
               case 'Rental':
+                return <Ionicons name={'home-outline'} size={size} color={color}/>
+              case 'Percent':
                 return <Ionicons name={'calculator-outline'} size={size} color={color}/>
               case 'Repair':
                 return <Ionicons name={'hammer-outline'} size={size} color={color}/>
@@ -38,11 +38,11 @@ function MainApp({ }) {
         tabBarOptions={{ }}
         >
   
-          <Tab.Screen name="Invest">
+          <Tab.Screen name="Rental">
             {props => <Home {...props} />}
           </Tab.Screen>
   
-          <Tab.Screen name="Rental" component={Shop} />
+          <Tab.Screen name="Percent" component={Shop} />
 
           <Tab.Screen name="Repair" component={AfterRepair} />
         </Tab.Navigator>

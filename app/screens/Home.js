@@ -175,7 +175,7 @@ export default function Home() {
       <StatusBar style="auto" />
 
       <TitleText
-        text='[Real Estate] Analyzer'
+        text='[Rental] Property Analyzer'
       />
 
       <RentalForm

@@ -12,7 +12,7 @@ function Welcome({ navigation }) {
     return (
         <View style={styles.container}>
             <TitleText
-                text='Welcome to Acre. We will help you analyze Real estate properties.'
+                text='Welcome to Acre. We will help you analyze [Real Estate] properties.'
             />
 
             <Button
