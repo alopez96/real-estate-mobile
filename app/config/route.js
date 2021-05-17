@@ -1,12 +1,19 @@
 import React from 'react';
 
-//import react navigation
+//import react navigation - bottom tabs
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-//import screens
+//import react navigation - stack nav
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+//import main screens
 import Home from './../screens/Home';
 import Shop from './../screens/Shop';
 import AfterRepair from './../screens/AfterRepair';
+
+//import Welcome screen
+import Welcome from './../screens/Welcome';
 
 // import Icons
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -42,4 +49,31 @@ function MainApp({ }) {
     );
 }
 
-export { MainApp }
+
+const Stack = createStackNavigator();
+
+function WelcomeStack() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen
+          name="Welcome"
+          component={Welcome}
+          options={{
+            title: ''
+          }}
+        />
+        <Stack.Screen
+          name="MainApp"
+          component={MainApp}
+          options={{
+            title: ''
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+
+export { MainApp, WelcomeStack }
