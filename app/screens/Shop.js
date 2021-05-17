@@ -21,6 +21,7 @@ export default function Shop() {
   const [rent, setRent] = useState(0)
   const [percent, setPercent] = useState(0)
   const [visible, setVisible] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   var list_of_numbers = [
     {
@@ -78,6 +79,9 @@ export default function Shop() {
     // anything between 1-2% will probably generate decent cashflow
     // anything more than 2% will generate cashflow (be wary of these, usually not a good sign)
     setPercent(percent_string);
+
+    // update state to show the results
+    setIsSubmitted(true)
   }
 
   const toggleOverlay = () => {
@@ -102,10 +106,19 @@ export default function Shop() {
         icon='analytics-outline'
       />
 
-      <HeaderText
-        prefix='1-2 % Test result: '
-        text={percent.toString()}
-      />
+      {
+        isSubmitted
+        ?
+        
+        <>
+        <HeaderText
+          prefix='1-2 % Test result: '
+          text={percent.toString()}
+        />
+        </>
+
+        :null
+      }
 
       <HelpSection
         visible={visible}

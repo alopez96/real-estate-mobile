@@ -27,6 +27,7 @@ function AfterRepair() {
     const [rehabCost, setRehabCost] = useState(0)
     const [offer, setOffer] = useState(0)
     const [visible, setVisible] = useState(false)
+    const [isSubmitted, setIsSubmitted] = useState(false)
 
     var list_of_numbers = [
         {
@@ -79,6 +80,9 @@ function AfterRepair() {
         var offer_amount = getOfferAmount(arv, rehabCost);
         
         setOffer(offer_amount);
+
+        // update state to show the results
+        setIsSubmitted(true)
     }
 
     const toggleOverlay = () => {
@@ -102,10 +106,20 @@ function AfterRepair() {
                 icon='cash-outline'
             />
 
-        <HeaderText
+        {
+            isSubmitted
+
+            ?
+            <>
+            <HeaderText
                 prefix='Offer amount: $'
                 text={offer.toString()}
             />
+            </>
+
+            :null
+
+        }
 
         <HelpSection
             visible={visible}

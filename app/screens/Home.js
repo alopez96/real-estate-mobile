@@ -38,6 +38,7 @@ export default function Home() {
   const [interest, setInterest] = useState(0.0325)
   const [downpayment, setDownpayment] = useState(0.03)
   const [visible, setVisible] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
     
   const loan_duration = 30;
   const tax_percent = 0.0075;
@@ -102,17 +103,17 @@ export default function Home() {
   const onPressBtn = async() => {
     //verify input
     if(isNaN(price) || isNaN(rent)){
-      alert('input must be a number');
+      alert('Input must be a number');
       return;
     }
 
     // if input is a string, and the length of the string is 0, alert error
     if(price.length === 0 || rent.length === 0){
-      alert('input must not be 0');
+      alert('Input must not be 0');
       return;
     }
     else if(price === 0 || rent === 0){
-      alert('input must not be 0');
+      alert('Input must not be 0');
       return;  
     }
 
@@ -120,18 +121,22 @@ export default function Home() {
     const cash_needed =  await updateCashNeeded()
     const cash_flow = await updateCashflow()
     updateCashoncash(cash_flow, cash_needed)
+
+    // update state to show the results
+    setIsSubmitted(true)
   }
+
 
   const updateState = (var_name, val) => {
     
     switch(var_name) {
-      case 'Price':
+      case 'Home price':
         setPrice(val)
         break; // exist out of switch
       case 'Rent':
         setRent(val)
         break; // exist out of switch
-      case 'interest':
+      case 'Interest rate':
         setInterest(val)
         break; // exist out of switch
       case 'Down payment':
@@ -148,7 +153,7 @@ export default function Home() {
   // note: var_name must match a case in the switch within updateState()
   var list_of_numbers = [
     {
-      var_name: 'Price',
+      var_name: 'Home price',
       value: price
     },
     {
@@ -156,7 +161,7 @@ export default function Home() {
       value: rent
     },
     {
-      var_name: 'Interest',
+      var_name: 'Interest rate',
       value: interest
     },
     {
@@ -189,26 +194,35 @@ export default function Home() {
         icon='analytics-outline'
       />
 
-      <HeaderText
-        prefix='Cash needed: $'
-        text={cashNeeded.toString()}
-      />
+      {
+        isSubmitted
+        ?
+        <>
+          <HeaderText
+            prefix='Cash needed: $'
+            text={cashNeeded.toString()}
+          />
 
-      <HeaderText
-        prefix='Mothly cashflow: $'
-        text={cashflow.toString()}
-      />
+          <HeaderText
+            prefix='Mothly cashflow: $'
+            text={cashflow.toString()}
+          />
 
-      <HeaderText
-        prefix='Cash on cash (%): '
-        text={cashoncash.toString()}
-      />
+          <HeaderText
+            prefix='Cash on cash (%): '
+            text={cashoncash.toString()}
+          />
+        </>
+
+        : null
+      }
 
       <HelpSection
         visible={visible}
         toggleOverlay={toggleOverlay}
         helpText={helpTextHome}
       />
+
     </View>
   );
 }
