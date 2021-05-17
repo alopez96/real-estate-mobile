@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, Keyboard } from 'react-native';
 import styles from './styles';
 
 
@@ -39,6 +39,8 @@ function RentalForm({ var_name, value, updateState }){
             style={styles.input}
             value={value}
             keyboardType='phone-pad'
+            // add a done button to allow user to hide keypad
+            returnKeyType={ 'done' }
             onChangeText={(val) => verifyInput(var_name, val)}
             />
         </View>
