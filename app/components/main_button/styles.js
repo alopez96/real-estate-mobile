@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
         paddingLeft: paddingSides,
         paddingRight: paddingSides,
         borderRadius: 50,
-        margin: 20
+        margin: 20,
+        minWidth: 300
     },
     text:{
         color: 'white',

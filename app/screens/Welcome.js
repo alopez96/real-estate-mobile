@@ -17,6 +17,7 @@ function Welcome({ navigation }) {
 
             <Button
                 title="Let's get some deals >"
+                color='rgb(255, 81, 0)'
                 onPress={() => navigation.navigate('MainApp')}
             />
         </View>
