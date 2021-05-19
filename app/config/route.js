@@ -55,7 +55,7 @@ const Stack = createStackNavigator();
 function WelcomeStack() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Welcome">
+      <Stack.Navigator initialRouteName="Welcome" headerMode="none">
         <Stack.Screen
           name="Welcome"
           component={Welcome}
