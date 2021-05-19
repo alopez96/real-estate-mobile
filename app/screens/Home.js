@@ -35,6 +35,8 @@ export default function Home() {
   const [cashflow, setCashflow] = useState(0)
   const [cashoncash, setCashoncash] = useState(0)
   const [cashNeeded, setCashNeeded] = useState(0)
+  const [mortgagePayments, setMortgagePayments] = useState(0)
+  const [totalExpenses, setTotalExpenses] = useState(0)
   const [interest, setInterest] = useState(0.0325)
   const [downpayment, setDownpayment] = useState(0.03)
   const [visible, setVisible] = useState(false)
@@ -78,12 +80,19 @@ export default function Home() {
     var principal_amount = price - down_payment;
     // get monthly expenses with the following two functions
     var mortgage_pay = getMortgagePayments(principal_amount, interest, loan_duration)
+    
+    // update mortgagePayments state
+    setMortgagePayments(mortgage_pay.toFixed(2));
+
     var monthly_expenses =
       getMonthlyExpenses(
         price, mortgage_pay, pmi_percent, insurance,
         tax_percent, vacancy_percent, repairs_percent,
         property_mgt_percent, capex_monthly
       );
+
+    // update mortgagePayments state
+    setTotalExpenses(monthly_expenses.toFixed(2));
 
     var monthly_profit = getMonthlyProfit();
 
@@ -201,6 +210,16 @@ export default function Home() {
           <HeaderText
             prefix='Cash needed: $'
             text={cashNeeded.toString()}
+          />
+
+          <HeaderText
+            prefix='Mortgage payments: $'
+            text={mortgagePayments.toString()}
+          />
+
+          <HeaderText
+            prefix='Total monthly expenses: $'
+            text={totalExpenses.toString()}
           />
 
           <HeaderText
