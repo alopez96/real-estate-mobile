@@ -10,9 +10,9 @@ import { TitleText } from '../components/title_text';
 function Welcome({ navigation }) {
 
     return (
-        <View style={styles.container}>
+        <View style={styles.welcomeContainer}>
             <TitleText
-                text='Welcome to Acre. We will help you analyze [Real Estate] properties.'
+                text='Welcome to Acres. We will help you analyze [Real Estate] properties.'
             />
 
             <Button

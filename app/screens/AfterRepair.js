@@ -26,6 +26,7 @@ function AfterRepair() {
     const [arv, setArv] = useState(0)
     const [rehabCost, setRehabCost] = useState(0)
     const [offer, setOffer] = useState(0)
+    const [percent, setPercent] = useState(0.70)
     const [visible, setVisible] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
 
@@ -37,6 +38,10 @@ function AfterRepair() {
         {
         var_name: 'rehab cost',
         value: rehabCost
+        },
+        {
+            var_name: 'percent',
+            value: percent
         }
     ]
 
@@ -48,6 +53,9 @@ function AfterRepair() {
             break; // exist out of switch
         case 'rehab cost':
             setRehabCost(val)
+            break; // exist out of switch
+        case 'percent':
+            setPercent(val)
             break; // exist out of switch
         default:
             // define default
@@ -77,7 +85,7 @@ function AfterRepair() {
         // once variables have beeen verified, run the math
 
         // I am running the 70% rule using 90% for Northern California
-        var offer_amount = getOfferAmount(arv, rehabCost);
+        var offer_amount = getOfferAmount(arv, rehabCost, percent);
         
         setOffer(offer_amount);
 
