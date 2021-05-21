@@ -26,7 +26,7 @@ function AfterRepair() {
     const [arv, setArv] = useState(0)
     const [rehabCost, setRehabCost] = useState(0)
     const [offer, setOffer] = useState(0)
-    const [percent, setPercent] = useState(0.70)
+    const [percent, setPercent] = useState(90) // this value will be divided by 100 to get percentage
     const [visible, setVisible] = useState(false)
     const [isSubmitted, setIsSubmitted] = useState(false)
 

@@ -110,8 +110,16 @@ function getMonthlyExpenses(
     i = monthly interest rate
     n = number of months required to repay the loan
 */
-function getMortgagePayments(principal_amount, interest_percent, loan_duration){
+function getMortgagePayments(principal_amount, interest, loan_duration){
     var mortgage_pay;
+
+    // convert interest to a percentage
+    var interest_percent;
+    if(interest >= 1){
+        interest_percent = interest / 100;
+    } else {
+        interest_percent = interest;
+    }
 
     // define monthly interest rate
     var monthly_interest = interest_percent / 12;
@@ -182,7 +190,15 @@ function getCashoncash(cashflow, down_payment) {
 */
 function getOfferAmount(arv_estimate, rehab_cost, percent) {
 
-    var arv = arv_estimate * percent;
+    // convert percent into a percentage value
+    var interest_percent;
+    if(percent >= 1){
+        interest_percent = percent / 100;
+    } else {
+        interest_percent = percent;
+    }
+
+    var arv = arv_estimate * interest_percent;
     var offer = arv - rehab_cost;
 
     // convert number to string with 2 decimal place precision

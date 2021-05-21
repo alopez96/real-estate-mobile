@@ -37,8 +37,8 @@ export default function Home() {
   const [cashNeeded, setCashNeeded] = useState(0)
   const [mortgagePayments, setMortgagePayments] = useState(0)
   const [totalExpenses, setTotalExpenses] = useState(0)
-  const [interest, setInterest] = useState(0.0325)
-  const [downpayment, setDownpayment] = useState(0.03)
+  const [interest, setInterest] = useState(3.25) // this value will be divided by 100 to get percentage
+  const [downpayment, setDownpayment] = useState(3) // this value will be divided by 100 to get percentage
   const [visible, setVisible] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
     
@@ -53,7 +53,7 @@ export default function Home() {
   const property_mgt_percent = 0.10;
   const capex_monthly = 200;
 
-  var down_payment = price * downpayment;
+  var down_payment = price * (downpayment/100);
 
 
   const updateCashNeeded = () => {
