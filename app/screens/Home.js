@@ -61,7 +61,8 @@ export default function Home() {
     const cash = getCashNeeded(price, down_payment);
 
     // convert number to string with commas
-    const cash_string = numberWithCommas(cash);
+    // const cash_string = numberWithCommas(cash);
+    const cash_string = new Intl.NumberFormat().format(cash);
 
     // set state to string version of cash for easy to read text
     setCashNeeded(cash_string);
@@ -81,8 +82,9 @@ export default function Home() {
     // get monthly expenses with the following two functions
     var mortgage_pay = getMortgagePayments(principal_amount, interest, loan_duration)
     
-    // update mortgagePayments state
-    setMortgagePayments(mortgage_pay.toFixed(2));
+    // setMortgagePayments(mortgage_pay.toFixed(2));
+    const mortgage_readable = new Intl.NumberFormat().format(mortgage_pay);
+    setMortgagePayments(mortgage_readable);
 
     var monthly_expenses =
       getMonthlyExpenses(
@@ -91,14 +93,16 @@ export default function Home() {
         property_mgt_percent, capex_monthly
       );
 
-    // update mortgagePayments state
-    setTotalExpenses(monthly_expenses.toFixed(2));
+    // setTotalExpenses(monthly_expenses.toFixed(2));
+    const total_readable = new Intl.NumberFormat().format(monthly_expenses);
+    setTotalExpenses(total_readable);
 
     var monthly_profit = getMonthlyProfit();
 
     var cash_flow = getCashflow(monthly_profit, monthly_expenses)
     
-    setCashflow(cash_flow);
+    const cashflow_readable = new Intl.NumberFormat().format(cash_flow);
+    setCashflow(cashflow_readable);
 
     return cash_flow;
   }
@@ -171,11 +175,13 @@ export default function Home() {
     },
     {
       var_name: 'Interest rate',
-      value: interest
+      value: interest,
+      isPercent: true
     },
     {
       var_name: 'Down payment',
-      value: downpayment
+      value: downpayment,
+      isPercent: true
     }
   ]
 

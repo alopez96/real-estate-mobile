@@ -150,7 +150,7 @@ function getCashflow(monthly_profit, monthly_expenses){
 
     var cash_flow = monthly_profit - monthly_expenses;
 
-    cash_flow = cash_flow.toPrecision(4);
+    // cash_flow = cash_flow.toPrecision(4);
 
     return cash_flow;
 }

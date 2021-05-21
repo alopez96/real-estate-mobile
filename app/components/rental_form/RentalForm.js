@@ -17,6 +17,7 @@ function RentalForm({ items, updateState }){
                 key={index}
                 var_name={item.var_name}
                 value={item.value}
+                isPercent={item.isPercent}
                 updateState={updateState}
                 />
             )
