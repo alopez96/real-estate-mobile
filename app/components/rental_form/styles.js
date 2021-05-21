@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     },
     flexEnd:{
       alignItems: 'flex-end',
+    },
+    lightText:{
+      color: '#858585'
     }
 });
 

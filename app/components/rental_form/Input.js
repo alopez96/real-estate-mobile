@@ -3,7 +3,7 @@ import { View, Text, TextInput, Keyboard } from 'react-native';
 import styles from './styles';
 
 
-function RentalForm({ var_name, value, updateState }){
+function RentalForm({ var_name, value, isPercent, updateState }){
 
     // if the value is zero, set to null so that
     // we display the placeholder instead of 0
@@ -34,6 +34,10 @@ function RentalForm({ var_name, value, updateState }){
         <>
         <View style={styles.row}>
             <Text>{var_name}</Text>
+            {isPercent
+            ? <Text style={styles.lightText}> %</Text>
+            : null
+            }
             <TextInput
             placeholder={var_name}
             style={styles.input}

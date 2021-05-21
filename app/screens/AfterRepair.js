@@ -32,16 +32,17 @@ function AfterRepair() {
 
     var list_of_numbers = [
         {
-        var_name: 'arv',
-        value: arv
+            var_name: 'arv',
+            value: arv
         },
         {
-        var_name: 'rehab cost',
-        value: rehabCost
+            var_name: 'rehab cost',
+            value: rehabCost
         },
         {
             var_name: 'percent',
-            value: percent
+            value: percent,
+            isPercent: true
         }
     ]
 
