@@ -42,7 +42,7 @@ function RentalForm({ var_name, value, isPercent, updateState }){
             placeholder={var_name}
             style={styles.input}
             value={value}
-            keyboardType='phone-pad'
+            keyboardType='decimal-pad'
             // add a done button to allow user to hide keypad
             returnKeyType={ 'done' }
             onChangeText={(val) => verifyInput(var_name, val)}
